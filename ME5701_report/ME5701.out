@@ -1,0 +1,8 @@
+\BOOKMARK [1][-]{section.1}{Literature review}{}% 1
+\BOOKMARK [1][-]{section.2}{Bayesian filter}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Bayes theorem in discrete and continuous cases}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Bayesian filtering algorithm}{section.2}% 4
+\BOOKMARK [1][-]{section.3}{Kalman filter}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{Kalman filter}{section.3}% 6
+\BOOKMARK [2][-]{subsection.3.2}{Extended Kalman filter}{section.3}% 7
+\BOOKMARK [2][-]{subsection.3.3}{Test results}{section.3}% 8
