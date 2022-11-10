@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  10 NOV 2022 14:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  10 NOV 2022 16:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,27 +578,60 @@ LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
                                                   \fi \fi 
 l.279 	\end{equation}
                      ]
-<fig1.png, id=106, 429.10312pt x 310.91156pt>
+<fig1.png, id=110, 526.96875pt x 395.22656pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
 Package pdftex.def Info: fig1.png  used on input line 402.
-(pdftex.def)             Requested size: 227.62204pt x 164.92465pt.
-<fig2.png, id=109, 429.10312pt x 310.91156pt>
+(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<fig2.png, id=113, 526.96875pt x 395.22656pt>
 File: fig2.png Graphic file (type png)
 <use fig2.png>
 Package pdftex.def Info: fig2.png  used on input line 429.
-(pdftex.def)             Requested size: 227.62204pt x 164.92465pt.
-<fig3.png, id=110, 429.10312pt x 310.91156pt>
+(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[3]
+<fig3.png, id=151, 526.96875pt x 395.22656pt>
 File: fig3.png Graphic file (type png)
 <use fig3.png>
-Package pdftex.def Info: fig3.png  used on input line 439.
-(pdftex.def)             Requested size: 227.62204pt x 164.92465pt.
-<fig4.png, id=111, 696.35156pt x 356.83313pt>
+Package pdftex.def Info: fig3.png  used on input line 438.
+(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+<fig4.png, id=154, 526.96875pt x 395.22656pt>
 File: fig4.png Graphic file (type png)
 <use fig4.png>
-Package pdftex.def Info: fig4.png  used on input line 446.
-(pdftex.def)             Requested size: 227.62204pt x 116.6391pt.
- [3]
+Package pdftex.def Info: fig4.png  used on input line 457.
+(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+ [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
+ has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.466 	\newpage
+               pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.2}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.466 	\newpage
+               pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.466 	\newpage
+               pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.4}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.466 	\newpage
+                <./fig1.png (PNG copy)> <./fig2.png (PNG copy)> <./fig3.png (PN
+G copy)> <./fig4.png (PNG copy)>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -610,46 +643,23 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 574.
-[4pdfTeX warning (ext4): destination with the same identifier (name{figure.1}) 
-has been already used, duplicate ignored
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
+[5
 
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.574 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.2}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.574 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.574 \end{document}
-                    pdfTeX warning (ext4): destination with the same identifier
- (name{figure.4}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.574 \end{document}
-                     <./fig1.png (PNG copy)> <./fig2.png (PNG copy)> <./fig3.pn
-g (PNG copy)> <./fig4.png (PNG copy)>]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 574.
+]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
  (./ME5701.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 574.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 574.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
 Package rerunfilecheck Info: File `ME5701.out' has not changed.
-(rerunfilecheck)             Checksum: 83F80255C280270DBBC2A3F36F386A0D;516.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 574.
+(rerunfilecheck)             Checksum: 1DBFEB64BC21295A2E2DE6BF3EE36CC7;567.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 589.
  ) 
 Here is how much of TeX's memory you used:
- 8281 strings out of 481239
- 123129 string characters out of 5920376
- 418192 words of memory out of 5000000
- 23302 multiletter control sequences out of 15000+600000
+ 8287 strings out of 481239
+ 123184 string characters out of 5920376
+ 418232 words of memory out of 5000000
+ 23305 multiletter control sequences out of 15000+600000
  577959 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  34i,29n,37p,599b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -674,10 +684,10 @@ ublic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
 s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
 /usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
 ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ME5701.pdf (4 pages, 299709 bytes).
+Output written on ME5701.pdf (5 pages, 399704 bytes).
 PDF statistics:
- 244 PDF objects out of 1000 (max. 8388607)
- 209 compressed objects within 3 object streams
- 75 named destinations out of 1000 (max. 500000)
- 85 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 224 compressed objects within 3 object streams
+ 78 named destinations out of 1000 (max. 500000)
+ 93 words of extra memory for PDF output out of 10000 (max. 10000000)
 

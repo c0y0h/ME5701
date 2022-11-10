@@ -348,7 +348,7 @@
 			\STATE Calculate $\boldsymbol{C}$ using Eq.~\ref{eq17}
 			\STATE $\boldsymbol{K}=\boldsymbol{\Sigma_{k}^{-}}\boldsymbol{C}^{T}(\boldsymbol{C}\boldsymbol{\Sigma_{k}^{-}}\boldsymbol{C}^{T}+\boldsymbol{R})^{-1}$ \ \ \ \ 	\COMMENT{the kalman gain}
 			\STATE Obtain an observation value $\boldsymbol{y_{k}}$
-			\STATE $\boldsymbol{\mu_{k}^{+}}=\boldsymbol{\mu_{k}^{-}}+\boldsymbol{K}[\boldsymbol{y_{k}}-\boldsymbol{H}(\boldsymbol{\mu_{k}^{-}})]^{-1}$
+			\STATE $\boldsymbol{\mu_{k}^{+}}=\boldsymbol{\mu_{k}^{-}}+\boldsymbol{K}[\boldsymbol{y_{k}}-\boldsymbol{H}(\boldsymbol{\mu_{k}^{-}})]$
 			\STATE $\boldsymbol{\Sigma_{k}^{+}}=(\boldsymbol{I}-\boldsymbol{KC})\boldsymbol{\Sigma_{k}^{-}}$ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \COMMENT{update end}
 			\STATE $\boldsymbol{\hat{x}_{k}^{+}}=\boldsymbol{\mu_{k}^{+}}$
 			\ENDFOR
@@ -397,7 +397,7 @@
 	0.01 &0.01  &0.0001 
 	\end{Bmatrix}$ respectively. As shown in Fig.~\ref{fig1}, Kalman filter cut down the error between observation and real signals. 
 	
-	\begin{figure}[htbp]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=8cm]{fig1.png}
 		\caption{Estimation for $x_{1}(t)=t^{2}$ using Kalman filter with one sensor}
@@ -424,29 +424,44 @@
 	\end{equation}
 	
 	
-	\begin{figure}[htbp]
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=8cm]{fig2.png}
 		\caption{Estimation for $x_{1}(t)=t^{2}$ using Kalman filter after sensor fusion}
 		\label{fig2}
 	\end{figure}
 
-	Then we choose another signal with stronger nonlinearity. The real signal $x_{2}(t)$ follows that  $x_{2}(t+1)=sin(3x_{2}(t))$ and $x_{2}(0)=0.1$. 
+	Then we choose another signal with stronger nonlinearity. The real signal $x_{2}(t)$ follows that  $x_{2}(t+1)=sin(3x_{2}(t))$ and $x_{2}(0)=0.1$. We still use the model in Eq.~\ref{eq18} and Eq.~\ref{eq19}, and the simulation result is shown in Fig.~\ref{fig3}. The limitation of Kalman is shown that it cannot track the nonlinear signal and result in a large estimation error.
 	
-	
-	\begin{figure}[htbp]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=8cm]{fig3.png}
 		\caption{Estimation for $x_{2}(t)$ using Kalman filter}
 		\label{fig3}
 	\end{figure}
+
+	Instead, we use the extended Kalman filter to process the same signal. The prediction and observation equation is given in Eq.~\ref{eq21}, where $Q_{k}\sim N(0,0.0001)$ and $R_{k}\sim N(0,1)$. Suppose the initial state $X_{0}\sim N(0.1,0.1)$, the estimation performance is plot in Fig.~\ref{fig4}, where tracking error is much smaller than that using Kalman filter.
 	
-	\begin{figure}[htbp]
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	X_{k}&=sin(3X_{k-1})+Q_{k}\\
+	Y_{k}&=X_{k}^{2}+R_{k}
+	\label{eq21}
+	\end{aligned}
+	\end{split}
+	\end{equation}
+	
+	\begin{figure}[h]
 		\centering
 		\includegraphics[width=8cm]{fig4.png}
 		\caption{Estimation for $x_{2}(t)$ using extended Kalman filter}
 		\label{fig4}
 	\end{figure}
+
+	\section{Particle filters}
+
+	Instead, we use the extended Kalman filter to process the same signal. The prediction and observation equation is given in Eq.~\ref{eq21}, where $Q_{k}\sim N(0,0.0001)$ and $R_{k}\sim N(0,1)$. Suppose the initial state $X_{0}\sim N(0.1,0.1)$, the estimation performance is plot in Fig.~\ref{fig4}, where tracking error is much smaller than that using Kalman filter.
 	
 	\newpage
 	
