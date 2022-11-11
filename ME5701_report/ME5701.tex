@@ -44,6 +44,16 @@
 	
 	\section{Literature review}
 	
+	In recent years, mobile robot technology is constantly growing and developing, among which indoor mobile robots have been continuously applied and developed in industry and daily life, including AGV robots in factories, home sweeping robots and food delivery robots in the service industry, the landing of these products shows that indoor mobile robots have great development potential and market. Among them, navigation technology is one of the key tasks of mobile robots. The autonomous navigation technology of mobile robots is the technology of automatically moving robots from one place to another based on computer resources on the robot. There are many different approaches to mobile robot navigation, where path planning and obstacle avoidance play a key role. [1]
+	
+	Navigation, as a basic task in the field of mobile robots, can be divided into two types: global navigation and local navigation [2]. In global navigation, we assume that some pre-understood knowledge of the environment is available and there are many methods for global navigation, such as Voronoi graph [3,4], Artificial potential field method [5], Dijkstra algorithm [6], Visibility graph [7], Grids [8], and Cell decomposition method [9] etc. In local navigation, the robot can use equipped sensors (such as ultrasonic rangefinder sensor, sharp infrared rangefinder sensor and vision (camera) sensor) to independently decide or control its movement and direction. c. Fuzzy logic [10], Neural network [11], Neuro-fuzzy [12], Genetic algorithm [13], Particle swarm optimization algorithm [14], Ant colony optimization algorithm [15], and Simulated annealing algorithm [16] etc have been successfully used by various researchers to solve local navigation problems
+	
+	The purpose of navigation is to search for an optimal or sub-optimal path from a starting point to a target point avoiding obstacles. Movement during this process often depends on the actual position of the robot and sensor readings. [17] But in practice, mobile robots operating in unstructured environments usually do not exist or partially understand the environment, the environment is not static, and execution is often associated with uncertainty [18]. Therefore, global path planning must be associated with obstacle detection and avoidance. [19]
+	Therefore, the navigation of indoor mobile robots involves the use of sensors to avoid obstacles and position, which is an important application. The information provided by multiple sensors is more accurate than that of a single sensor, so in fact, multi-sensor data fusion has received more attention in recent years. [20] Kalman filtering and its variants are often used when filtering sensors, and Extended Kalman filtering (EKF) is often used for sensors in robot navigation because they are nonlinear. Therefore, Extended Kalman filtering has many applications in robot indoor navigation and positioning. This is also one of the mainstream sensor algorithms.
+	
+	The Kalman filter has the ability to make an optimal estimate of the state variable even with noisy measurements. The EKF was used instead of KF due to nonlinearity of a mobile robot kinematic model. For example, in the paper [21], the Extended Kalman Filter was used to fuse two types of positioning sensors. The first approach uses encoder, compass and GPS receiver. The second approach uses gyroscope, accelerometer and GPS.
+	Thus, the main focus of this paper is the application of Extended Kalman filtering in indoor robot navigation, and to implement an example using sensors and extended Kalman filtering algorithm.
+	
 	\section{Bayesian filter}
 	
 	\subsection{Bayes theorem in discrete and continuous cases}
@@ -397,12 +407,13 @@
 	0.01 &0.01  &0.0001 
 	\end{Bmatrix}$ respectively. As shown in Fig.~\ref{fig1}, Kalman filter cut down the error between observation and real signals. 
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=8cm]{fig1.png}
 		\caption{Estimation for $x_{1}(t)=t^{2}$ using Kalman filter with one sensor}
 		\label{fig1}
 	\end{figure}
+	
 
 	Now we add another sensor with higher measurement accuracy and modify the observation equation (Eq.~\ref{eq20}), where we tend to trust more on the second sensor and let $R=diag\begin{Bmatrix}
 	3 &5
@@ -424,14 +435,14 @@
 	\end{equation}
 	
 	
-	\begin{figure}[h]
+	\begin{figure}[H]
 		\centering
 		\includegraphics[width=8cm]{fig2.png}
 		\caption{Estimation for $x_{1}(t)=t^{2}$ using Kalman filter after sensor fusion}
 		\label{fig2}
 	\end{figure}
 
-	Then we choose another signal with stronger nonlinearity. The real signal $x_{2}(t)$ follows that  $x_{2}(t+1)=sin(3x_{2}(t))$ and $x_{2}(0)=0.1$. We still use the model in Eq.~\ref{eq18} and Eq.~\ref{eq19}, and the simulation result is shown in Fig.~\ref{fig3}. The limitation of Kalman is shown that it cannot track the nonlinear signal and result in a large estimation error.
+	Then we choose another signal with stronger nonlinearity. The real signal $x_{2}(t)$ follows that  $x_{2}(t+1)=sin(3x_{2}(t))$ and $x_{2}(0)=0.1$. We still use the model in Eq.~\ref{eq18} and Eq.~\ref{eq19}, and the simulation result is shown in Fig.~\ref{fig3}. The limitation of Kalman filter is shown that it cannot track the nonlinear signal and result in a large estimation error.
 	
 	\begin{figure}[H]
 		\centering
@@ -459,9 +470,133 @@
 		\label{fig4}
 	\end{figure}
 
-	\section{Particle filters}
+	In conclusion, Kalman filter assume that the prediction and observation function are both linear, and also suppose the error $Q_{k},R_{k}$ follows the normal distribution. Then states can be quickly estimated following predict and update rules in Bayes formula. Due to their bad performance on nonlinear cases, extended Kalman filter expand the nonlinear functions by Taylor series, which greatly improves the filtering performancing. However, EKF algorithm need to calculate the Jacobian matrix iteratively, which may be computationally expensive for complex functions. Moreover, the Jacobian matrix even not exist for discontinuous system. Some functions with strong nonlinearity can also lead to unsatisfactory results.
 
-	Instead, we use the extended Kalman filter to process the same signal. The prediction and observation equation is given in Eq.~\ref{eq21}, where $Q_{k}\sim N(0,0.0001)$ and $R_{k}\sim N(0,1)$. Suppose the initial state $X_{0}\sim N(0.1,0.1)$, the estimation performance is plot in Fig.~\ref{fig4}, where tracking error is much smaller than that using Kalman filter.
+	\section{Particle filters}
+	
+	\subsection{Particle filtering theory}
+
+	Particle filters have been widely used applied in robot localization and navigation. Unlike Kalman filters that make assumptions on prediction and observation equations, particle filters focuses on dealing with the improper integrals in Bayesian filering algorithm which are hard to acquired analytically. For a probability density function $f(x)$, we can use a bunch of particles with different weights to approach it,
+	
+	\begin{equation}
+	f(x)\approx \sum_{i=1}^{n}\omega^{(i)} \delta (x-x^{(i)})
+	\label{eq22}
+	\end{equation}
+	
+	where $\omega^{(i)}$ is the weight for the $i^{th}$ particle and the weights satisfy $\sum_{i} \omega^{(i)}=1$. To simplify the problem, here we suppose the random variable of last state $X_{k-1}$ follows the normal distribution. We use $n$ particles $x_{k-1}^{(i)}$ to approach the pdf, i.e. $f_{k-1}(x)=\sum_{i=1}^{n}\omega_{k}^{(i)} \delta (x-x_{k-1}^{(i)})$. Following the prediction step in Bayesian filtering algorithm, we get the pdf of prior probability.
+	
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	f_{k}^{-}(x)&=\int_{-\infty}^{+\infty}f_{Q}[x-F(v)]f_{k-1}(v)dv\\
+	&=\sum_{i=1}^{n}\omega _{k-1}^{(i)}f_{Q}[x-F(x_{k-1}^{(i)})]
+	\label{eq23}
+	\end{aligned}
+	\end{split}
+	\end{equation}
+	
+	To avoid sampling in each loop, we hope that the prior pdf is in the particle form like Eq.~\ref{eq22}. Denote the pdf of a random variable $Z$ is $f_{Z}=f_{Q}[x-F(x_{k-1}^{(i)})]$, and suppose $Q$ follows normal distribution. Then by Fourier convolution theorem we know that $Z$ can be seen as a sum of two independent random variables $X$ and $Y$ (shown in Eq.~\ref{eq24}).
+	
+	
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	f_{Z}&=(2\pi Q)^{-\frac{1}{2}}e^{-\frac{[x-F(x_{k-1}^{(i)})]^{2}}{2Q}}\overset{F.T}{\rightarrow}e^{i \cdot F(x_{k-1}^{(i)})t}\cdot e^{-\frac{Q}{2}t^{2}}\\
+	f_{X}&=\delta [x-F(x_{k-1}^{(i)})]\overset{F.T}{\rightarrow}e^{i \cdot F(x_{k-1}^{(i)})t}\\
+	f_{Y}&=(2\pi Q)^{-\frac{1}{2}}e^{-\frac{x^{2}}{2Q}}\overset{F.T}{\rightarrow}e^{-\frac{Q}{2}t^{2}}\\
+	f_{Z}&=f_{X}\ast f_{Y}\Rightarrow Z=X+Y
+	\label{eq24}
+	\end{aligned}
+	\end{split}
+	\end{equation}
+	
+	Therefore, each $Z$ can be seen as a sum of certain event $X=F(x_{k-1}^{(i)})$ and a random event $Y\sim N(0,Q)$. Then $f_{k}^{-}(x)$ can be approximated by $n$ particles $x_{k}^{(i)}$, 
+	
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	f_{k}^{-}(x)=\sum_{i=1}^{n}\omega_{k-1}^{(i)}\delta (x-x_{k}^{(i)})\\
+	x_{k}^{(i)}=F(x_{k-1}^{(i)})+v, v\sim N(0,Q)
+	\label{eq25}
+	\end{aligned}
+	\end{split}
+	\end{equation}
+	
+	In this prediction step, only the positions of particles on the real line are changed. After an observation value $y_{k}$ is acquired by the sensor, the pdf of posterior probability is derived following the update step in Bayesian filtering algorithm.
+	
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	f_{k}^{+}(x)&=\eta f_{R}[y_{k}-H(x)]f_{k}^{-}(x)\\
+	&=\sum_{i=1}^{n}\eta f_{R}[y_{k}-H(x_{k}^{(i)})]\omega_{k-1}^{(i)}\delta (x-x_{k}^{(i)})\\
+	&=\eta \sum_{i=1}^{n}\omega_{k}^{(i)}\delta (x-x_{k}^{(i)})
+	\label{eq26}
+	\end{aligned}
+	\end{split}
+	\end{equation}
+	
+	In this step, it can be seen as the update of particles' weights while their positions remain unchanged.
+	
+	\begin{equation}
+		\omega_{k}^{(i)}=f_{R}[y_{k}-H(x_{k}^{(i)})]\omega_{k-1}^{(i)}
+		\label{eq27}
+	\end{equation}
+	
+	After the two steps, position and weight of particles are both changed, and the posterior probability density function can be approximated by these particles. Then the estimated state can be given by
+	
+	\begin{equation}
+	\hat{x}_{k}^{+}=\int_{-\infty}^{+\infty}x\sum_{i=1}^{n}\omega_{k}^{(i)}\delta (x-x_{k}^{(i)})=\sum_{i=1}^{n}\omega_{k}^{(i)}x_{k}^{(i)}
+	\label{eq28}
+	\end{equation}
+	
+	
+	\subsection{Resampling}
+	
+	In practice, after normalizing the weights in each update step, few particles may take extremely high weights and lead to particle degeneracy, which will cause the failure of next update step. This is due to the limited number of particles and the normal distribution form of the pdf $f_{R}$. Therefore, resampling procedure is need in each iteration. In resampling algorithm, particles are randomly duplicated and killed but the sum remains unchanged. Usually, we assume that particles with higher weights are more likely to be duplicated while those with lower weights tend to be eliminated. After that, all weights of particles are set to be $\frac{1}{n}$ so that particle degeneracy problem is solved. The whole algorithm pseudocode of particle filtering with resampling procedure is given below.
+	
+	
+	\begin{algorithm}
+		\caption{Particle filter}
+		\begin{algorithmic}  
+			\STATE Prediction equation $X_{k}=F(X_{k-1})+Q_{k}$
+			\STATE Observation equation $Y_{k}=H(X_{k})+R_{k}$
+			\STATE $Q_{k}\sim N(0,Q)$, $R_{k}\sim N(0,R)$, $X_{0}\sim N(\mu_{0}^{+}, \sigma_{0}^{+})$
+			\STATE Initialize $ \mu_{0}^{+}, \sigma_{0}^{+}$, $Q$, $R$
+			\STATE Produce $n$ particles $x_{0}^{(i)}$, set all weights $\omega_{0}^{(i)}=\frac{1}{n}$
+			\FOR {k=1,...,r}
+			\STATE $x_{k}^{(i)}=F(x_{k-1}^{(i)})+v, v\sim N(0,Q)$\ \ \ \ \COMMENT{prediction step}
+			\STATE Obtain an observation value $y_{k}$
+			\STATE $\omega_{k}^{(i)}=f_{R}[y_{k}-H(x_{k}^{(i)})]\cdot \omega_{k-1}^{(i)}$\ \ \ \ \ \ \COMMENT{update step}
+			\STATE $\omega_{k}^{(i)}=\frac{\omega_{k}^{(i)}}{\sum \omega_{k}^{(i)}}$ \qquad \qquad \qquad \qquad \ \ \ \COMMENT{normalization}
+			\STATE Resampling and set all weights to be $\frac{1}{n}$
+			\STATE $\hat{x}_{k}^{+}=\sum_{i=1}^{n}\omega_{k}^{(i)}x_{k}^{(i)}$
+			\ENDFOR
+		\end{algorithmic}
+	\end{algorithm}
+	
+	
+	\subsection{Test results}
+	
+	Here we use the same nonlinear signal when testing EKF in section 3, and select 100 particles all with initial value 0.1 and weights $\frac{1}{100}$. We choose to believe more our observation function and set $Q=0.01$ and $R=0.001$. The simulation result is shown in Fig.~\ref{fig5}, where the nonlinear signal can be recovered with relatively small estimation error.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=8cm]{fig8.png}
+		\caption{Estimation for $x_{2}(t)$ using particle filter}
+		\label{fig5}
+	\end{figure}
+
+	Actually particle filter tends to have better performance than EKF on nonlinear functions. Here we simply assume that $f_{Q}$ and $f_{R}$ are both in shape of Gaussian probability-density function, and simply set the initial position and weights for particles, which may be result in error. Some numerical methods for sampling from an arbitrary pdf can be applied to improve the estimation performance, such as inverse-cumulative-distribution-funtion transform method (ITM) and the sample and reject method. 
+	
+	\section{Design of an EKF-based DWA planner}
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=9cm]{fig7.png}
+		\caption{Estimation for $x_{2}(t)$ using particle filter}
+		\label{fig6}
+	\end{figure}
+	
 	
 	\newpage
 	

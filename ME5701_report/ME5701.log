@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  10 NOV 2022 16:23
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.12.29)  11 NOV 2022 23:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -507,131 +507,141 @@ LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-Overfull \hbox (1.6994pt too wide) detected at line 78
+) [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
+
+
+]
+Overfull \hbox (1.6994pt too wide) detected at line 88
 []
  []
 
 
-Overfull \hbox (27.62817pt too wide) detected at line 135
-[]
- []
-
-[1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
-
-
-pdfTeX warning (ext4): destination with the same identifier (name{equation.2.3}
-) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.147 	\end{equation}
-                     pdfTeX warning (ext4): destination with the same identifie
-r (name{equation.2.3}) has been already used, duplicate ignored
-
-\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
-                                                  \fi \fi 
-l.147 	\end{equation}
-                     ]pdfTeX warning (ext4): destination with the same identifi
-er (name{equation.2.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.151 	\begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.2.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.151 	\begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.2.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.151 	\begin{equation}
-                       pdfTeX warning (ext4): destination with the same identif
-ier (name{equation.2.6}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.151 	\begin{equation}
-                       
-Overfull \hbox (13.25262pt too wide) detected at line 164
+Overfull \hbox (27.62817pt too wide) detected at line 145
 []
  []
 
 
-Overfull \hbox (1.53633pt too wide) detected at line 177
+Overfull \hbox (13.25262pt too wide) detected at line 174
+[]
+ []
+
+
+Overfull \hbox (1.53633pt too wide) detected at line 187
 []
  []
 
 Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on in
-put line 190.
-LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
-57.
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
-File: omsptm.fd 
-)
-LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 257.
- [2pdfTeX warning (ext4): destination with the same identifier (name{equation.2
-.6}) has been already used, duplicate ignored
+put line 200.
+[2pdfTeX warning (ext4): destination with the same identifier (name{equation.2.
+3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.279 	\end{equation}
-                     ]
-<fig1.png, id=110, 526.96875pt x 395.22656pt>
+l.219 	
+       pdfTeX warning (ext4): destination with the same identifier (name{equati
+on.2.3}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.219 	
+       pdfTeX warning (ext4): destination with the same identifier (name{equati
+on.2.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.219 	
+       pdfTeX warning (ext4): destination with the same identifier (name{equati
+on.2.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.219 	
+       ]
+LaTeX Font Info:    Trying to load font information for OMS+ptm on input line 2
+67.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/omsptm.fd
+File: omsptm.fd 
+)
+LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 267.
+ [3]
+<fig1.png, id=136, 526.96875pt x 395.22656pt>
 File: fig1.png Graphic file (type png)
 <use fig1.png>
-Package pdftex.def Info: fig1.png  used on input line 402.
+Package pdftex.def Info: fig1.png  used on input line 412.
 (pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<fig2.png, id=113, 526.96875pt x 395.22656pt>
+<fig2.png, id=139, 526.96875pt x 395.22656pt>
 File: fig2.png Graphic file (type png)
 <use fig2.png>
-Package pdftex.def Info: fig2.png  used on input line 429.
+Package pdftex.def Info: fig2.png  used on input line 440.
 (pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[3]
-<fig3.png, id=151, 526.96875pt x 395.22656pt>
+<fig3.png, id=143, 526.96875pt x 395.22656pt>
 File: fig3.png Graphic file (type png)
 <use fig3.png>
-Package pdftex.def Info: fig3.png  used on input line 438.
+Package pdftex.def Info: fig3.png  used on input line 449.
 (pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
-<fig4.png, id=154, 526.96875pt x 395.22656pt>
-File: fig4.png Graphic file (type png)
-<use fig4.png>
-Package pdftex.def Info: fig4.png  used on input line 457.
-(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+
+Underfull \vbox (badness 2744) has occurred while \output is active []
+
  [4pdfTeX warning (ext4): destination with the same identifier (name{figure.1})
  has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.466 	\newpage
-               pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.2}) has been already used, duplicate ignored
+l.453 
+      pdfTeX warning (ext4): destination with the same identifier (name{figure.
+2}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.466 	\newpage
-               pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.3}) has been already used, duplicate ignored
+l.453 
+       <./fig1.png (PNG copy)> <./fig2.png (PNG copy)>]
+<fig4.png, id=177, 526.96875pt x 395.22656pt>
+File: fig4.png Graphic file (type png)
+<use fig4.png>
+Package pdftex.def Info: fig4.png  used on input line 468.
+(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+ [5pdfTeX warning (ext4): destination with the same identifier (name{figure.3})
+ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.466 	\newpage
-               pdfTeX warning (ext4): destination with the same identifier (nam
-e{figure.4}) has been already used, duplicate ignored
+l.536 	\end{equation}
+                     pdfTeX warning (ext4): destination with the same identifie
+r (name{figure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.466 	\newpage
-                <./fig1.png (PNG copy)> <./fig2.png (PNG copy)> <./fig3.png (PN
-G copy)> <./fig4.png (PNG copy)>]
+l.536 	\end{equation}
+                      <./fig3.png (PNG copy)> <./fig4.png (PNG copy)>]
+<fig8.png, id=191, 526.96875pt x 395.22656pt>
+File: fig8.png Graphic file (type png)
+<use fig8.png>
+Package pdftex.def Info: fig8.png  used on input line 584.
+(pdftex.def)             Requested size: 227.62204pt x 170.71602pt.
+<fig7.png, id=192, 1320.935pt x 693.59125pt>
+File: fig7.png Graphic file (type png)
+<use fig7.png>
+Package pdftex.def Info: fig7.png  used on input line 595.
+(pdftex.def)             Requested size: 256.0748pt x 134.46129pt.
+
+Overfull \hbox (4.0748pt too wide) in paragraph at lines 595--596
+ [][] 
+ []
+
+[6pdfTeX warning (ext4): destination with the same identifier (name{figure.5}) 
+has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.601 	\newpage
+               pdfTeX warning (ext4): destination with the same identifier (nam
+e{figure.6}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.601 	\newpage
+                <./fig8.png (PNG copy)> <./fig7.png>]
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -643,51 +653,52 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 589.
-[5
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 724.
+[7
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 589.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 724.
  (./ME5701.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 589.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 589.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 724.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 724.
 Package rerunfilecheck Info: File `ME5701.out' has not changed.
-(rerunfilecheck)             Checksum: 1DBFEB64BC21295A2E2DE6BF3EE36CC7;567.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 589.
+(rerunfilecheck)             Checksum: 8B3EC0D808496B9B75A9DA4D83354E24;834.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 724.
  ) 
 Here is how much of TeX's memory you used:
- 8287 strings out of 481239
- 123184 string characters out of 5920376
- 418232 words of memory out of 5000000
- 23305 multiletter control sequences out of 15000+600000
+ 8341 strings out of 481239
+ 123781 string characters out of 5920376
+ 413741 words of memory out of 5000000
+ 23328 multiletter control sequences out of 15000+600000
  577959 words of font info for 124 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 34i,29n,37p,599b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 34i,29n,37p,978b,493s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
 e/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb></usr/share/texlive
 /texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf
 -dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/f
 onts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-ib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmm
-ib7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/s
-hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/
-type1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/time
-s/utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb><
-/usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on ME5701.pdf (5 pages, 399704 bytes).
+ype1/public/amsfonts/cmextra/cmex7.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmmi5.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib
+10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib
+7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cm/cmsy5.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
+lic/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/
+utmb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></u
+sr/share/texlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on ME5701.pdf (7 pages, 591088 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
- 224 compressed objects within 3 object streams
- 78 named destinations out of 1000 (max. 500000)
- 93 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 323 PDF objects out of 1000 (max. 8388607)
+ 281 compressed objects within 3 object streams
+ 107 named destinations out of 1000 (max. 500000)
+ 135 words of extra memory for PDF output out of 10000 (max. 10000000)
 

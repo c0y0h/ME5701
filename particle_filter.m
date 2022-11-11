@@ -1,3 +1,5 @@
+clc,clear;
+
 t=0.01:0.01:1;
 x=zeros(1,100);
 y=zeros(1,100);
@@ -8,12 +10,13 @@ y(1)=0.01^2;
 
 % real data and observed data
 for i=2:100
-    x(i)=sin(x(i-1))+5*x(i-1)/(x(i-1)^2+1);
-    y(i)=x(i)^2+normrnd(0,1);
+%     x(i)=sin(x(i-1))+5*x(i-1)/(x(i-1)^2+1);
+    x(i)=sin(3*x(i-1));
+    y(i)=x(i)^2+normrnd(0,0.1);
 %     y(i)=x(i)^2;
 end
 
-plot(t,x,t,y,'LineWidth',2);
+plot(t,x,'r',t,y,'g','LineWidth',2);
 
 %% PF filter
 n=100;
@@ -30,7 +33,8 @@ end
 for i=2:100
     % prediction
     for j=1:n
-        xold(j)=sin(xold(j))+5*xold(j)/(xold(j)^2+1)+normrnd(0,0.1);  %Q
+%         xold(j)=sin(xold(j))+5*xold(j)/(xold(j)^2+1)+normrnd(0,0.1);  %Q
+        xold(i)=sin(3*xold(i-1))+normrnd(0,0.01);
     end
 
     % update

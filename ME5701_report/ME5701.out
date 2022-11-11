@@ -7,3 +7,7 @@
 \BOOKMARK [2][-]{subsection.3.2}{Extended Kalman filter}{section.3}% 7
 \BOOKMARK [2][-]{subsection.3.3}{Test results}{section.3}% 8
 \BOOKMARK [1][-]{section.4}{Particle filters}{}% 9
+\BOOKMARK [2][-]{subsection.4.1}{Particle filtering theory}{section.4}% 10
+\BOOKMARK [2][-]{subsection.4.2}{Resampling}{section.4}% 11
+\BOOKMARK [2][-]{subsection.4.3}{Test results}{section.4}% 12
+\BOOKMARK [1][-]{section.5}{Design of an EKF-based DWA planner}{}% 13
