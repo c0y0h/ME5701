@@ -15,11 +15,18 @@
 \usepackage{algorithmic}
 %\usepackage{algpseudocode}
  \usepackage{float}
+ \usepackage{amssymb}
+ 
+\makeatletter
+\newcommand{\rmnum}[1]{\romannumeral #1}
+\newcommand{\Rmnum}[1]{\expandafter\@slowromancap\romannumeral #1@}
+\makeatother
+ 
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
 		T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \begin{document}
 	
-	\title{Investigation in extended kalman filter for indoor robot navigation\\
+	\title{Investigation in state estimation for indoor robot navigation\\
 %		{\footnotesize \textsuperscript{*}Note: Sub-titles are not captured in Xplore and
 %			should not be used}
 %		\thanks{Identify applicable funding agency here. If none, delete this.}
@@ -42,17 +49,17 @@
 		component, formatting, style, styling, insert
 	\end{IEEEkeywords}
 	
-	\section{Literature review}
+	\section{Introduction}
 	
-	In recent years, mobile robot technology is constantly growing and developing, among which indoor mobile robots have been continuously applied and developed in industry and daily life, including AGV robots in factories, home sweeping robots and food delivery robots in the service industry, the landing of these products shows that indoor mobile robots have great development potential and market. Among them, navigation technology is one of the key tasks of mobile robots. The autonomous navigation technology of mobile robots is the technology of automatically moving robots from one place to another based on computer resources on the robot. There are many different approaches to mobile robot navigation, where path planning and obstacle avoidance play a key role. [1]
+	In recent years, mobile robot technology is constantly growing and developing, among which indoor mobile robots have been widely applied in industry and daily life, including AGV robots in factories, home sweeping robots and food delivery robots in the service industry. Navigations is one of the key tasks for mobile robots and can be summarized as three different questions: "where am I?", "where am I going?" and "how should I get there?" \cite{leonard1991mobile}. 
 	
-	Navigation, as a basic task in the field of mobile robots, can be divided into two types: global navigation and local navigation [2]. In global navigation, we assume that some pre-understood knowledge of the environment is available and there are many methods for global navigation, such as Voronoi graph [3,4], Artificial potential field method [5], Dijkstra algorithm [6], Visibility graph [7], Grids [8], and Cell decomposition method [9] etc. In local navigation, the robot can use equipped sensors (such as ultrasonic rangefinder sensor, sharp infrared rangefinder sensor and vision (camera) sensor) to independently decide or control its movement and direction. c. Fuzzy logic [10], Neural network [11], Neuro-fuzzy [12], Genetic algorithm [13], Particle swarm optimization algorithm [14], Ant colony optimization algorithm [15], and Simulated annealing algorithm [16] etc have been successfully used by various researchers to solve local navigation problems
+	The "where am I?" problem is important since robots should first percept the unknown environment for further executions. Localization is aimed at solving it and can be divided into two main classes \cite{borenstein1997mobile}. The relative methods \cite{ahmed2005sharp} \cite{wang2022relative} rely on the odometry to figure out the robot state from the initial pose that is already known. However, they are sensitive to the initial value and limited by cumulative error. 
 	
-	The purpose of navigation is to search for an optimal or sub-optimal path from a starting point to a target point avoiding obstacles. Movement during this process often depends on the actual position of the robot and sensor readings. [17] But in practice, mobile robots operating in unstructured environments usually do not exist or partially understand the environment, the environment is not static, and execution is often associated with uncertainty [18]. Therefore, global path planning must be associated with obstacle detection and avoidance. [19]
-	Therefore, the navigation of indoor mobile robots involves the use of sensors to avoid obstacles and position, which is an important application. The information provided by multiple sensors is more accurate than that of a single sensor, so in fact, multi-sensor data fusion has received more attention in recent years. [20] Kalman filtering and its variants are often used when filtering sensors, and Extended Kalman filtering (EKF) is often used for sensors in robot navigation because they are nonlinear. Therefore, Extended Kalman filtering has many applications in robot indoor navigation and positioning. This is also one of the mainstream sensor algorithms.
+	Instead, absolute methods also combines the external observation from different sensors. Based on Bayes estimation theory, Kalman filter is one of the most used method for state estimation and proved to be robust. To tackle the strong nonlinearity in actual situations, Extended Kalman Filter was proposed and has been widely used in robot navigation \cite{chen2012ekf}, simultaneous localization and mapping (SLAM) \cite{barrau2015ekf} and multi-sensor fusion \cite{park2016navigation}. Some variants such as Error State Kalman Filter (ESKF) \cite{xu2022error}, Unscented Kalman Filter (UKF) \cite{han2015ukf} and Cubature Kalman Filter (CKF) \cite{xu2019mcc} further improve the performance. 
 	
-	The Kalman filter has the ability to make an optimal estimate of the state variable even with noisy measurements. The EKF was used instead of KF due to nonlinearity of a mobile robot kinematic model. For example, in the paper [21], the Extended Kalman Filter was used to fuse two types of positioning sensors. The first approach uses encoder, compass and GPS receiver. The second approach uses gyroscope, accelerometer and GPS.
-	Thus, the main focus of this paper is the application of Extended Kalman filtering in indoor robot navigation, and to implement an example using sensors and extended Kalman filtering algorithm.
+	Particle filter is another direction to handle nonlinear problems. By sampling particles to approximate the probability density function and update them iteratively, the state of robot can be estimated. However, the updation of abundant particles can be computationally inefficient and affect the filter's real-time performance. Therefore, an approach that combines particle filter and particle swarm optimization algorithm \cite{zhang2019improved} was proposed to achieve a robust and accurate estimation with less particles.
+	
+	The rest of the paper will be organized as follows. Section \Rmnum{2} introduces the Bayesian filter and its application for state estimation in continuous cases. On the basis, Kalman Filter and Extended Kalman Filter are mentioned in section \Rmnum{3} and an example is tested. Section \Rmnum{4} explains the theory of Particle Filter and gives a comparison with EKF. In section \Rmnum{5}, an EKF-based DWA planner is designed for real-time state estimation for robot navigation, and it is proved to be accurate and efficient. \Rmnum{6} concludes the work.
 	
 	\section{Bayesian filter}
 	
@@ -590,17 +597,100 @@
 	
 	\section{Design of an EKF-based DWA planner}
 	
+	Dynamic window approach (DWA) is a local path planner that widely used in robot navigation. In each control period, a dynamic window is created as $(v_{min}, v_{max},\omega_{min}, \omega_{max})^{T}$ according to the kinematic limitation of robot and the outside environment. By sampling the velocities in the window, we suppose they remain unchanged in next time period and generate all possible trajectories. Those trajectories are scored by an evaluation function (Eq.~\ref{eq29}) that considers the heading cost, velocity and distance towards obstacles. 
+	
+	\begin{equation}
+	G(v,\omega)=\sigma (\alpha \cdot heading(v,\omega)+ \beta \cdot dist(v,\omega)+ \gamma \cdot velocity(v,\omega))
+	\label{eq29}
+	\end{equation}
+	
+	Then we select the best trajectory and choose the corresponding velocity $(v,\omega)^{T}$ as input for the controller. The best trajectory is selected iteratively until the robot reaches the goal (Fig.~\ref{fig6}).
+	
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=9cm]{fig7.png}
-		\caption{Estimation for $x_{2}(t)$ using particle filter}
+		\includegraphics[width=8cm]{fig11.png}
+		\caption{Trajectories generated by DWA planner}
 		\label{fig6}
 	\end{figure}
 	
+	In real cases, the position of robot can not be acquired accurately, and moving error also exists with the given input. Therefore, we apply the EKF for real-time state estimation. We observe the robot's position by a GPS sensor with noise $\omega_{1} \sim N(0,0.1)$ and the moving error by motor $\omega_{2}\sim N(0,0.01)$. For state estimation, the dynamic model of differential robot can be established as
 	
-	\newpage
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	X_{k}&=
+	\setlength{\arraycolsep}{1.0pt}
+	\begin{pmatrix}
+	1 & 0 & 0 & 0 & 0 \\
+	0 & 1 & 0 & 0 & 0 \\
+	0 & 0 & 1 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	0 & 0 & 0 & 0 & 0 \\
+	\end{pmatrix}\begin{pmatrix}
+	x_{k-1} \\
+	y_{k-1} \\
+	\theta_{k-1} \\
+	v_{k-1} \\
+	\omega_{k-1}
+	\end{pmatrix}+
+	\setlength{\arraycolsep}{0.2pt}
+	\begin{pmatrix}
+	(dt)cos\theta_{k-1} & 0 \\
+	(dt)sin\theta_{k-1} & 0 \\
+	0 & dt \\
+	1 & 0 \\
+	0 & 1 \\
+	\end{pmatrix}\begin{pmatrix}
+	v_{k-1} \\
+	\omega_{k-1}\end{pmatrix}+Q_{k}\\
+	Y_{k}&=\begin{pmatrix}
+	1 &0  &0  &0  &0 \\ 
+	0 &1  &0  &0  &0 
+	\end{pmatrix}\begin{pmatrix}
+	x_{k} \\
+	y_{k} \\
+	\theta_{k} \\
+	v_{k} \\
+	\omega_{k}
+	\end{pmatrix}+R_{k}
+	\label{eq30}	
+	\end{aligned}
+	\end{split}
+	\end{equation}
 	
-	\newpage
+	We assume that $Q_{k}\sim N(0,Q)$ and $R_{k}\sim N(0,R)$, where $Q=diag\{0.01,0.01,0,0,0\}$ and $R=diag\{0.1,0.1\}$. The Jacobian matrixes is calculated as
+	
+	\begin{equation}
+	\begin{split}
+	\begin{aligned}
+	A&=\begin{pmatrix}
+	1 &0  &-v_{k-1}(dt)sin\theta _{k-1}  &(dt)cos\theta _{k-1}  &0 \\ 
+	0 &1  &v_{k-1}(dt)cos\theta _{k-1}  &(dt)sin\theta _{k-1}  &0 \\ 
+	0 &0  &1  &0  &dt \\ 
+	0 &0  &0  &1  &0 \\ 
+	0 &0  &0  &0  &1 
+	\end{pmatrix}\\
+	C&=\begin{pmatrix}
+	1 &0  &0  &0  &0 \\ 
+	0 &1  &0  &0  &0 
+	\end{pmatrix}
+	\label{eq31}	
+	\end{aligned}
+	\end{split}
+	\end{equation}
+	
+	Each time we follow the prediction step to get the prior estimation $\hat{x}_{k}^{-}$, and update it with the observation value $y_{k}$ from GPS. The posterior estimation $\hat{x}_{k}^{+}$ is then used as the state for selecting the next best trajectory. Simulation results for this EKF-based DWA planner are shown in Fig.~\ref{fig7}.
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=9cm]{fig7.png}
+		\caption{Simulation results for the EKF-based DWA planner}
+		\label{fig7}
+	\end{figure}
+
+	The red line represent the real trajectory of robot while the blue line is the estimated one. With the relatively unaccurate observation values (green points), the EKF-based DWA planner realized real-time localization with low estimation error and path planning for navigation. Here we suppose that all noise follows the normal distribution to simplify the problem, but in real cases the noise distribution may have different probability density functions, which limits the performance of EKF.
+	
+	\section{Conclusion}
 	
 	
 	
@@ -712,9 +802,9 @@
 %		\bibitem{b7} M. Young, The Technical Writer's Handbook. Mill Valley, CA: University Science, 1989.
 %	\end{thebibliography}
 
-%	\bibliographystyle{IEEEtran}
-%	
-%	\bibliography{ref_5701}{}	
+	\bibliographystyle{IEEEtran}
+	
+	\bibliography{ref_5701}{}	
 	
 	
 %	\vspace{12pt}
