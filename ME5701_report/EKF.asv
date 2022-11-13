@@ -1,0 +1,58 @@
+% code for EKF
+clc,clear;
+t=0.01:0.01:1;
+n=length(t);
+x=zeros(1,n);
+y=zeros(1,n);
+x(1)=0.1;
+y(1)=0.1^2;
+for i=2:n
+    % real signal
+    x(i)=sin(3*x(i-1));
+    y(i)=x(i)^2+normrnd(0,0.1);
+end
+
+plot(t,x,'r',t,y,'b','LineWidth',2);
+%% EKF
+Xplus=zeros(1,n);
+% initial value
+Pplus=0.1;
+Xplus(1)=0.1;
+Q=0.0001;
+R=1;
+for i=2:n
+    % predict
+    A=3*cos(3*Xplus(i-1));
+    Xminus=sin(3*Xplus(i-1));
+    Pminus=A*Pplus*A'+Q;
+    % update
+    C=2*Xminus;
+    K=Pminus*C'/(C*Pminus*C'+R);
+    Xplus(i)=Xminus+K*(y(i)-Xminus^2);
+    Pplus=(eye(1)-K*C)*Pminus;
+end
+
+plot(t,x,'r',t,y,'g',t,Xplus,'b','LineWidth',2);
+xlabel('Time/s');
+ylabel('Amplitude');
+legend('original','observed','estimated');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
